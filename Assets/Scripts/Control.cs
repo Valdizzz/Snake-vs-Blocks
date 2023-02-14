@@ -6,15 +6,17 @@ public class Control : MonoBehaviour
 {
     public Player player;
     public float Sensitivity;
+    public float Speed;
 
     private Vector3 _previousMousePosition;
 
     void Update()
     {
+        player.Rigidbody.velocity = new Vector3(0, 0, Speed);
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
-            player.Rigidbody.velocity= new Vector3 (delta.x *Sensitivity,0,delta.y*Sensitivity);
+            player.Rigidbody.velocity= new Vector3 (delta.x *Sensitivity,0, Speed);
         }
 
         _previousMousePosition = Input.mousePosition;
