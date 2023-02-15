@@ -5,7 +5,8 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
     public Transform SnakeHead;
-    public float SphereDiametr;
+    [Range(0f, 2f)]
+    public float SphereDistance;
 
     
     private List<Transform> tailsSpheres = new List<Transform>();
@@ -17,24 +18,23 @@ public class SnakeTail : MonoBehaviour
     void Start()
     {
         positions.Add(SnakeHead.position);
-        AddSphere();
-        AddSphere();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance =((Vector3)SnakeHead.position- positions[0]).magnitude;
-        if (distance > SphereDiametr)
+        float distance =((Vector3)SnakeHead.position - positions[0]).magnitude;
+        if (distance >= SphereDistance)
         {
             positions.Insert(0, SnakeHead.position);
             positions.RemoveAt(positions.Count-1);
 
-            distance -= SphereDiametr;
+            distance -= SphereDistance;
         }
         for (int i = 0; i < tailsSpheres.Count; i++)
         {
-            tailsSpheres[i].position = Vector3.Lerp(positions[i+1], positions[i], distance/SphereDiametr);
+            tailsSpheres[i].position = Vector3.Lerp(positions[i+1], positions[i], distance/SphereDistance);
         }
     }
 
@@ -43,5 +43,9 @@ public class SnakeTail : MonoBehaviour
         Transform _sphera = Instantiate(SnakeHead, positions[positions.Count-1],Quaternion.identity, transform);
         tailsSpheres.Add(_sphera);
         positions.Add(_sphera.position);
+    }
+    private void LateUpdate()
+    {
+        //AddSphere();
     }
 }
