@@ -5,7 +5,9 @@ using UnityEngine;
 public class Control : MonoBehaviour
 {
     public Player player;
+    [Range(0.01f, 1f)]
     public float Sensitivity;
+    [Range(5f, 100f)]
     public float Speed;
     public SnakeTail _tail;
 
@@ -20,7 +22,7 @@ public class Control : MonoBehaviour
             player.Rigidbody.velocity= new Vector3 (delta.x *Sensitivity,0, Speed);
             
         }
-        if (Input.GetMouseButton(2)) { _tail.AddSphere(); }
+        if (Input.GetMouseButton(2)) _tail.AddSphere(); 
 
         _previousMousePosition = Input.mousePosition;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Camera_Follow : MonoBehaviour
 {
     [SerializeField] private GameObject _object; //An object camera will follow
-    [SerializeField] private Vector3 zoom; // Camera's distance from the object
+   // [SerializeField] private Vector3 zoom; // Camera's distance from the object
     [SerializeField] private Quaternion _quaternionToObject; // Camera's rotation
     [SerializeField] private Vector3 cameraPosition; 
     private Camera _camera;

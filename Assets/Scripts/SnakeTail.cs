@@ -5,13 +5,13 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
     public Transform SnakeHead;
-    [Range(0f, 2f)]
+    [Range(1f, 2f)]
     public float SphereDistance;
     public GameObject SnakeTailPrefab;
     
     private List<Transform> tailsSpheres = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
-    private List<Vector3> normals = new List<Vector3>();
+    
 
 
 
