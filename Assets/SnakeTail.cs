@@ -18,6 +18,7 @@ public class SnakeTail : MonoBehaviour
     {
         positions.Add(SnakeHead.position);
         AddSphere();
+        AddSphere();
     }
 
     // Update is called once per frame
