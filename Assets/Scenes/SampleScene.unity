@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 192098999}
   - component: {fileID: 192099000}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192098996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 293c8bf4a4661214288924357c4762d6, type: 3}
   m_Name: 
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192098996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc71b66af94461f4ebcb00ff4fb36c7e, type: 3}
   m_Name: 
@@ -194,13 +194,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192098996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34f39c59833b3bd49b25e2801adf1de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SnakeHead: {fileID: 1312238407}
   SphereDistance: 0.86
+  SnakeTailPrefab: {fileID: 5231199625405760893, guid: 558f325bcd65991469cba524c29f49bf, type: 3}
 --- !u!43 &201066152
 Mesh:
   m_ObjectHideFlags: 0
@@ -2633,8 +2634,11 @@ GameObject:
   - component: {fileID: 1312238410}
   - component: {fileID: 1312238409}
   - component: {fileID: 1312238408}
+  - component: {fileID: 1312238414}
+  - component: {fileID: 1312238413}
+  - component: {fileID: 1312238412}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,6 +2738,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312238406}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1312238412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312238406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f39c59833b3bd49b25e2801adf1de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SnakeHead: {fileID: 1312238407}
+  SphereDistance: 1.1
+  SnakeTailPrefab: {fileID: 1128484516364615645, guid: 3d70896f52e0f64429b61b317e5718ea, type: 3}
+--- !u!114 &1312238413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312238406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc71b66af94461f4ebcb00ff4fb36c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1312238414}
+  Sensitivity: 0.1
+  Speed: 10
+  _tail: {fileID: 1312238412}
+--- !u!114 &1312238414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312238406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293c8bf4a4661214288924357c4762d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 1312238408}
 --- !u!850595691 &1438621836
 LightingSettings:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class SnakeTail : MonoBehaviour
     public Transform SnakeHead;
     [Range(0f, 2f)]
     public float SphereDistance;
-
+    public GameObject SnakeTailPrefab;
     
     private List<Transform> tailsSpheres = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
@@ -24,8 +24,9 @@ public class SnakeTail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         
         float distance =((Vector3)SnakeHead.position - positions[0]).magnitude;
-        if (distance >= SphereDistance)
+        while (distance >= SphereDistance) // if
         {
             positions.Insert(0, SnakeHead.position);
             positions.RemoveAt(positions.Count-1);
@@ -40,12 +41,18 @@ public class SnakeTail : MonoBehaviour
 
     public void AddSphere() 
     {
-        Transform _sphera = Instantiate(SnakeHead, positions[positions.Count-1],Quaternion.identity, transform);
-        tailsSpheres.Add(_sphera);
-        positions.Add(_sphera.position);
+       // Transform _sphera = Instantiate(SnakeHead, positions[positions.Count-1],Quaternion.identity, transform);
+       // tailsSpheres.Add(_sphera);
+       // positions.Add(_sphera.position);
+
+        var snakeTail = Instantiate(SnakeTailPrefab, positions[positions.Count - 1], Quaternion.identity, transform);
+        tailsSpheres.Add(snakeTail.transform);
+        positions.Add(snakeTail.transform.position);
     }
     private void LateUpdate()
     {
         //AddSphere();
     }
+
+    
 }
