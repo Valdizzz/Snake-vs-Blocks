@@ -20,13 +20,13 @@ public class LevelGenerator : MonoBehaviour
     {
          int length = Random.Range(MinLength, MaxLength);
 
-        for (int i = 0; i <= length; i++)
+        for (int i = 1; i <= length; i++)
         {
             int prefabIndex = Random.Range(0, BlocksPrefabs.Length);
-            GameObject blockPrefab = i == 0 ? FirstPrefab: BlocksPrefabs[prefabIndex];
+            GameObject blockPrefab = i == 1 ? FirstPrefab: BlocksPrefabs[prefabIndex];
             GameObject block = Instantiate(blockPrefab,transform);
             block.transform.localPosition = CalculateBlockPosition(i);
-            DistanceBetweenBlocks = length*9f + length;
+            DistanceBetweenBlocks = length*9.5f + length;
 
         }
         //Finish.localPosition = CalculateBlockPosition(length);

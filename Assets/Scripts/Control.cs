@@ -22,7 +22,7 @@ public class Control : MonoBehaviour
             player.Rigidbody.velocity= new Vector3 (delta.x *Sensitivity,0, Speed);
             
         }
-        if (Input.GetMouseButton(2)) _tail.AddSphere(); 
+        if (Input.GetMouseButton(2)) _tail.DeleteSphere(); 
 
         _previousMousePosition = Input.mousePosition;
     }

@@ -9,8 +9,6 @@ public class Finish : MonoBehaviour
         if (collision.collider.TryGetComponent(out Player player))
         {
             player.ReachFinish();
-            Debug.Log("Finished");
-            this.gameObject.SetActive(false);
         }
     }
 

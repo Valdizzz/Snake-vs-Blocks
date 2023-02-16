@@ -16,8 +16,8 @@ public class Camera_Follow : MonoBehaviour
         _camera = Camera.main;
         camRig = transform.parent;
 
-        cameraPosition = camRig.position;
-        _quaternionToObject = camRig.rotation;
+      //  cameraPosition = camRig.position;
+       // _quaternionToObject = camRig.rotation;
        // zoom = transform.localPosition;
     }
 

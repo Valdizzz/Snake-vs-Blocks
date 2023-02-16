@@ -9,7 +9,7 @@ public class SnakeTail : MonoBehaviour
     public float SphereDistance;
     public GameObject SnakeTailPrefab;
     
-    private List<Transform> tailsSpheres = new List<Transform>();
+    public List<Transform> tailsSpheres = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
     
 
@@ -48,6 +48,15 @@ public class SnakeTail : MonoBehaviour
         var snakeTail = Instantiate(SnakeTailPrefab, positions[positions.Count - 1], Quaternion.identity, transform);
         tailsSpheres.Add(snakeTail.transform);
         positions.Add(snakeTail.transform.position);
+        //GetComponent<>
+    }
+    public void DeleteSphere()
+    {
+        var lengthTail = tailsSpheres.Count-1;
+        var badTail = tailsSpheres[lengthTail];
+        badTail.gameObject.SetActive(false);
+        tailsSpheres.RemoveAt(lengthTail);
+        positions.RemoveAt(lengthTail);
     }
     private void LateUpdate()
     {
