@@ -35,8 +35,8 @@ public class Game : MonoBehaviour
         CurrentState = State.Won;
         Control.enabled = false;
         LevelIndex++;
-       // BestScoreIndex = Player.pointsBest;
-       // PointsIndex = Player.pointsCount;
+        BestScoreIndex = Player.pointsBest;
+        PointsIndex = Player.pointsCount;
         Debug.Log("You won");
         StartCoroutine(ExampleCoroutine());
 
@@ -72,12 +72,12 @@ public class Game : MonoBehaviour
     }
     public void BestScoreGet()
     {
-       // Player.pointsBest = BestScoreIndex;
+        Player.pointsBest = BestScoreIndex;
     }
 
     public void ScorePointsGet()
     {
-       // Player.pointsCount = PointsIndex;
+        Player.pointsCount = PointsIndex;
     }
 
     private const string PointsIndexKey = "PointsIndexKey";

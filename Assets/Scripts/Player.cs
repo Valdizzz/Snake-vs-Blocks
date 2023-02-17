@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
     public Rigidbody Rigidbody;
     public Game Game;
     public SnakeTail _tail;
-    public int pointsCount=1;
+    public int pointsCount = 1;
     public int pointsBest;
     public Cube currentCube;
-    
+
 
     public void ReachFinish()
     {
@@ -30,24 +30,24 @@ public class Player : MonoBehaviour
         if (pointsCount >= pointsBest) pointsBest = pointsCount;
         Debug.Log("Count: " + pointsCount);
         Debug.Log("Best: " + pointsBest);
-        Debug.Log("LegthTail"+ _tail.tailsSpheres.Count);
+        Debug.Log("LegthTail" + _tail.tailsSpheres.Count);
     }
     public void MeetBlock()
     {
-        
-            if (currentCube.power >= pointsCount)
-            {
-                Die();
-            }
-            else
-                while (currentCube.power > 0)
-                {
 
-                    _tail.DeleteSphere();
-                    currentCube.power--;
-                    pointsCount--;
-                }
-        
+        if (currentCube.power >= pointsCount)
+        {
+            Die();
+        }
+        else
+            while (currentCube.power > 0)
+            {
+
+                _tail.DeleteSphere();
+                currentCube.power--;
+                pointsCount--;
+            }
+
     }
 
     public void Die()
@@ -56,7 +56,16 @@ public class Player : MonoBehaviour
         Game.OnPlayerDied();
     }
 
-    void Update()
+   /* void Awake()
     {
-    }
+        if (pointsCount != Game.PointsIndex)
+        {
+            if (Game.PointsIndex > pointsCount)
+            for (int i = 1; i < Game.PointsIndex; i++)
+            {
+                pointsCount++;
+                _tail.AddSphere();
+            }
+        }
+    }*/
 }

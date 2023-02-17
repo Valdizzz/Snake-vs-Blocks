@@ -7,13 +7,14 @@ public class Cube : MonoBehaviour
     public int power;
     void Awake()
     {
-        power = Random.Range(1, 2);
+        power = Random.Range(0, 2);
 
     }
 
 
     void Update()
     {
+        if(power <= 0) GameObject.Destroy(gameObject);
 
     }
 
