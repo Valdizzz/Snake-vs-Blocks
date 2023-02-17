@@ -26,7 +26,7 @@ public class LevelGenerator : MonoBehaviour
             GameObject blockPrefab = i == 1 ? FirstPrefab: BlocksPrefabs[prefabIndex];
             GameObject block = Instantiate(blockPrefab,transform);
             block.transform.localPosition = CalculateBlockPosition(i);
-            DistanceBetweenBlocks = length*9.5f + length;
+            DistanceBetweenBlocks = length*10f + length;
 
         }
         //Finish.localPosition = CalculateBlockPosition(length);

@@ -21,6 +21,7 @@ public class Cube : MonoBehaviour
     {
         if (other.TryGetComponent(out Player Player))
         {
+            Player.currentCube = this;
             Player.MeetBlock();
 
 

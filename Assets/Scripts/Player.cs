@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     public SnakeTail _tail;
     public int pointsCount=1;
     public int pointsBest;
-    public Cube Cube;
+    public Cube currentCube;
+    
 
     public void ReachFinish()
     {
@@ -33,18 +34,20 @@ public class Player : MonoBehaviour
     }
     public void MeetBlock()
     {
-        if (Cube.power >= pointsCount) 
-        {
-            Die();
-        }
-        else
-            while (Cube.power>=0)
-        {
-            
-            _tail.DeleteSphere();
-            Cube.power--;
-            pointsCount--;
-        }
+        
+            if (currentCube.power >= pointsCount)
+            {
+                Die();
+            }
+            else
+                while (currentCube.power > 0)
+                {
+
+                    _tail.DeleteSphere();
+                    currentCube.power--;
+                    pointsCount--;
+                }
+        
     }
 
     public void Die()
