@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         int length = Random.Range(MinLength, MaxLength);
-        Plane.localScale = new Vector3(1f, 1f, (float)length);
+        Plane.localScale = new Vector3(1f, 1f, (float)length+1f);
         float _length = Finish.position.z-length*2f;
         DistanceBetweenBlocks = _length/length;
         for (int i = 1; i <= length; i++)
@@ -38,7 +38,16 @@ public class LevelGenerator : MonoBehaviour
 
     private Vector3 CalculateBlockPosition(int i)
     {
-
-        return new Vector3(0, 0, DistanceBetweenBlocks * (float)i);
+        float _z = DistanceBetweenBlocks * (float)i;
+        if (_z < Finish.position.z)
+        {
+            return new Vector3(0, 0, _z);
+        }
+        else
+        {
+            _z = Finish.position.z - 5f;
+            return new Vector3(0, 0, _z);
+        }  
+        
     }
 }

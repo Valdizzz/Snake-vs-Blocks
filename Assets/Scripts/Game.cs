@@ -7,6 +7,10 @@ public class Game : MonoBehaviour
 {
     public Control Control;
     public Player Player;
+    public Canvas Winner;
+    public Canvas GameWindow;
+    public Canvas Lose;
+    
     public enum State
     {
         Playing,
@@ -20,12 +24,25 @@ public class Game : MonoBehaviour
     {
         if (CurrentState != State.Playing) return;
 
+        if (AmountOfLives != 0)
+            {
+                AmountOfLives--;
+            Control.enabled = false;
+            StartCoroutine(ExampleCoroutine2());
+                return;
+            }
+        
         CurrentState = State.Loss;
         Control.enabled = false;
         Debug.Log("Game over!");
         PointsIndex = 0;
-        StartCoroutine(ExampleCoroutine());
+        StartCoroutine(ExampleCoroutine2());
 
+
+    }
+    public void ClearAllPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     public void OnPlayerReachedFinish()
@@ -38,6 +55,7 @@ public class Game : MonoBehaviour
         BestScoreIndex = Player.pointsBest;
         PointsIndex = Player.pointsCount;
         Debug.Log("You won");
+        
         StartCoroutine(ExampleCoroutine());
 
     }
@@ -48,6 +66,15 @@ public class Game : MonoBehaviour
         private set
         {
             PlayerPrefs.SetInt(LevelIdexKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+    public int AmountOfLives
+    {
+        get => PlayerPrefs.GetInt(AmountOfLivesKey, 2);
+        private set
+        {
+            PlayerPrefs.SetInt(AmountOfLivesKey, value);
             PlayerPrefs.Save();
         }
     }
@@ -70,6 +97,9 @@ public class Game : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+    private const string AmountOfLivesKey = "AmountOfLivesKey";
+
     public void BestScoreGet()
     {
         Player.pointsBest = BestScoreIndex;
@@ -86,17 +116,41 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         if (PointsIndex > -1) PointsIndex--;
+        GameWindow.enabled = true;
+        Winner.enabled = false;
+        Lose.enabled = false;
     }
-    private void ReloadLevel()
+    private void ReloadLevelWin()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Winner.enabled = true;
+        GameWindow.enabled = false;
+        Lose.enabled = false;
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    private void ReloadLevelLose()
+    {
+
+        Winner.enabled = false;
+        GameWindow.enabled = false;
+        Lose.enabled = true;
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator ExampleCoroutine()
     {
 
-        yield return new WaitForSeconds(2);
-        ReloadLevel();
+        yield return new WaitForSeconds(1);
+        ReloadLevelWin();
     }
+
+    IEnumerator ExampleCoroutine2()
+    {
+
+        yield return new WaitForSeconds(1);
+        ReloadLevelLose();
+    }
+
 }

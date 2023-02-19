@@ -13,7 +13,7 @@ public class Control : MonoBehaviour
 
     private Vector3 _previousMousePosition;
 
-    void Update()
+    void LateUpdate()
     {
         player.Rigidbody.velocity = new Vector3(0, 0, Speed);
         if (Input.GetMouseButton(0))
